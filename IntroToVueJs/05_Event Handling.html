@@ -10,7 +10,7 @@
 <body>
 <div class="nav-bar"></div>
 <div id="app">
-  <div class="product-img">
+  <div class="product-image">
     <img v-bind:src="image" v-bind:alt="altText"/>
   </div>
   <a v-bind:href="url">link text</a>
@@ -29,12 +29,19 @@
       <li v-for="size in sizes">{{ size }}</li>
     </ul>
     <div v-for="variant in variants" :key="variant.variantId">
-      <p>{{variant.variantColor}}</p>
+      <p @mouseover="updateProduct(variant.variantImage)">{{variant.variantColor}}</p>
+    </div>
+
+    <button v-on:click="addToCart">Add to Cart</button>
+    <button v-on:click="subtractToCart">Subtract to Cart</button>
+
+    <div class="cart">
+      <p>Cart({{cart}})</p>
     </div>
 
   </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="main.js"></script>
+<script src="05_Event Handling.js"></script>
 </body>
 </html>

@@ -15,14 +15,13 @@
   <div class="product">
 
     <div class="product-image">
-      <img :src="image"/>
+      <img :src="image" />
     </div>
 
     <div class="product-info">
-      <h1>{{ title }}</h1>
+      <h1>{{ product }}</h1>
       <p v-if="inStock">In Stock</p>
-      <p v-else>Out of Stock</p>
-      <p>{{ sale }}</p>
+      <p v-else :class="{ outOfStock: !inStock }">Out of Stock</p>
 
       <ul>
         <li v-for="detail in details">{{ detail }}</li>
@@ -30,10 +29,10 @@
 
 
       <div class="color-box"
-           v-for="(variant, index) in variants"
+           v-for="variant in variants"
            :key="variant.variantId"
            :style="{ backgroundColor: variant.variantColor }"
-           @mouseover="updateProduct(index)"
+           @mouseover="updateProduct(variant.variantImage)"
       >
       </div>
 
@@ -54,6 +53,6 @@
 
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="main.js"></script>
+<script src="06_Class & Style Binding.js"></script>
 </body>
 </html>
